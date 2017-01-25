@@ -25,5 +25,12 @@ The training dataset now contains a total of 24108 images (8036 per camera).
 
 The CNN model is based on NVIDIA's End to end learning for self driving cars paper. There is a minor change to the NVIDIA's model, that we have added Max Pooling layers after each convolutional layers. This helped reduce training time and also reduce overfitting. Note that this can also be done by adding dropouts after the fully connected layers. A rather interesting approach to elimiate overfitting in convolutional layers is to implement stochastic pooling. This would be done later.
 
+The model has a normalization layer followed by 5 convolutional layers. Note that each convolutional layer is followed by Max Pooling and an activation funtion- relu. The kernel size for first three convolutional layers is set at 5x5 with a stride of 2x2, while the kernel size for next 2 convolutional layers is 3 x 3 with a stride of 1 x 1. The model is flattened at the end of 5th convolutional layer. The last 5 layers are all fully connected layers, each activated by activation function - relu.
+
 The model summary is as follows:
 ![alt tag](https://github.com/abhio9vt/Behavioral-Cloning/blob/master/model_summary.png)
+
+### Training Process
+After preprocessing the images and augmenting the steering angles, I used fit_generator API of Keras library to train the model. The generator function helps as it generates images on the fly and trains them in batches. We designed 2 generators, one for training data and the other for validation data. Adam optimizer with a learning rate of 0.0001 was found to be working best during our simulation runs. The batch size for both the generators was set at 64, and the number of epochs was 
+set at 8 after trying various other #epochs ranging from 5 to 10. It was noticed that after 8 epochs there was very less decrease in validation error.
+
