@@ -1,7 +1,7 @@
 # Behavioral-Cloning
 
 ## Project Overview:
-In this project deep neural network is used to clone human behavior and drive the car around tracks in a simulator. For training, the car was driven in a simulator and left, right and center camera images were recorded, with the steering angles. This data was then split into training and validation set and used to train the neural network. The model was tested on two tracks and considered succesful if the car doesn't leave the driving area.
+In this project deep neural network is used to clone human behavior and drive the car around tracks in a simulator. For training, the car was driven in a simulator and left, right and center camera images were recorded, with the steering angles. This data was then split into training and validation set and used to train the neural network. The model was tested on two tracks and considered successful if the car doesn't leave the driving area.
 
 ## Implementation:
 
@@ -13,7 +13,7 @@ The training data contains left, center and right camera images and also the ste
 
 The training dataset now contains a total of 24108 images (8036 per camera).
 
-b. Preprocessing
+### Preprocessing
 
 (i) Cropping the image: It was observed that the top one-fifth of the image did not have any lanes and just had landscape. Thus its a good idea to crop that portion out. Similarly around 25 pixels at the bottom of the image had the car in it. So we have cropped out those pixels too.
 
@@ -21,7 +21,7 @@ b. Preprocessing
 
 (iii) Brightness augmentation: We generated images with different brightness by first converting images to HSV, scaling up or down the V channel and converting back to the RGB channel.
 
-c. Network Architecture
+### Network Architecture
 
 The CNN model is based on NVIDIA's End to end learning for self driving cars paper. There is a minor change to the NVIDIA's model, that we have added Max Pooling layers after each convolutional layers. This helped reduce training time and also reduce overfitting. Note that this can also be done by adding dropouts after the fully connected layers. A rather interesting approach to elimiate overfitting in convolutional layers is to implement stochastic pooling. This would be done later.
 
