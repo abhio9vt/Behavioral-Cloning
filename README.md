@@ -23,6 +23,22 @@ The training dataset now contains a total of 24108 images (8036 per camera).
 
 (iv) On plotting the steering angles in a histogram, it was noted that the distribution is skewed. This happens as the car is driven in counterclockwise direction in the simulator. To address this issue, we flip the image using openCV function cv2.flip and then take the negative of the steering angle of the original image.
 
+The images at various stages of preprocessing are as follows;
+a. Original image (from data provided by Udacity)
+![alt-tag](https://github.com/abhio9vt/Behavioral-Cloning/blob/master/original_img.png)
+
+b. Cropped image - after cropping top 35% and bottom 10% of the image
+![alt-tag](https://github.com/abhio9vt/Behavioral-Cloning/blob/master/cropped_image.png)
+
+c. Flipped image - after performing a vertical flipping using cv2.flip()
+![alt-tag](https://github.com/abhio9vt/Behavioral-Cloning/blob/master/flipped_image.png)
+
+d. Resized image - after resizing the image to the new dimension 64 x 64
+![alt-tag](https://github.com/abhio9vt/Behavioral-Cloning/blob/master/resized_img.png)
+
+e. Histogram of the original steering angles in the data provided nyn Udacity (This lead me to think towards augmenting data and generate more training examples, specially by flipping 50% of the images at random)
+![alt-tag](https://github.com/abhio9vt/Behavioral-Cloning/blob/master/steering_histogram.png)
+
 ### Network Architecture
 
 The CNN model is based on NVIDIA's End to end learning for self driving cars paper. There is a minor change to the NVIDIA's model, that we have added Max Pooling layers after each convolutional layers. This helped reduce training time and also reduce overfitting. Note that this can also be done by adding dropouts after the fully connected layers. A rather interesting approach to elimiate overfitting in convolutional layers is to implement stochastic pooling. This would be done later.
