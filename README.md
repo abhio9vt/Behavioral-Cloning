@@ -1,11 +1,11 @@
 # Behavioral-Cloning
 
-1. Project Overview:
+## Project Overview:
 In this project deep neural network is used to clone human behavior and drive the car around tracks in a simulator. For training, the car was driven in a simulator and left, right and center camera images were recorded, with the steering angles. This data was then split into training and validation set and used to train the neural network. The model was tested on two tracks and considered succesful if the car doesn't leave the driving area.
 
-2. Implementation:
+## Implementation:
 
-a. Training data: 
+### Training data: 
 
 I used the training data provided by Udacity. Note that the data can also be obtained by driving the car in simulator. If we need to generate the data using simulator, the car should be driven around the center of the track for 3-4 laps, and then it should also be driven for recovery, i.e. stop recording and take the car towards the corner and then start recording and bring the car towards the center. Training the car for recovery ensures that if the car leaves the center of the track it knows how to come back towards the center.
 
