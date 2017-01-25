@@ -5,7 +5,7 @@ In this project deep neural network is used to clone human behavior and drive th
 
 ## Implementation:
 
-### Training data: 
+### Training data collection: 
 
 I used the training data provided by Udacity. Note that the data can also be obtained by driving the car in simulator. If we need to generate the data using simulator, the car should be driven around the center of the track for 3-4 laps, and then it should also be driven for recovery, i.e. stop recording and take the car towards the corner and then start recording and bring the car towards the center. Training the car for recovery ensures that if the car leaves the center of the track it knows how to come back towards the center.
 
@@ -53,3 +53,6 @@ After preprocessing the images and augmenting the steering angles, I used fit_ge
 set at 8 after trying various other #epochs ranging from 5 to 10. It was noticed that after 8 epochs there was very less decrease in validation error.
 
 Note that the generator function is a really good way to train and fit the model, as otherwise we need to store the images and steering angles in an array, which would take a lot of memory.
+
+## Results
+The car is able to navigate on both the test sets correctly!
