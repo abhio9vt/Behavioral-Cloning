@@ -54,5 +54,12 @@ set at 8 after trying various other #epochs ranging from 5 to 10. It was noticed
 
 Note that the generator function is a really good way to train and fit the model, as otherwise we need to store the images and steering angles in an array, which would take a lot of memory.
 
+
+### Running the model
+The data preprocessing, network architecture and training code is in the file model.py. Running model.py outputs model.json and model.h5. These files contain the weights and other CNN model parameters. I have used the same drive.py file as provided by Udacity.
+To run the simulator, go to the terminal and cd to the folder where your project is saved. In the terminal enter
+
+python drive.py model.json
+
 ## Results
 The car is able to navigate on both the test sets correctly!
