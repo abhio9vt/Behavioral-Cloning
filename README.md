@@ -41,11 +41,21 @@ e. Histogram of the original steering angles in the data provided nyn Udacity (T
 
 ### Network Architecture
 
-The CNN model is based on NVIDIA's End to end learning for self driving cars paper. There is a minor change to the NVIDIA's model, that we have added Max Pooling layers after each convolutional layers. This helped reduce training time and also reduce overfitting. Note that this can also be done by adding dropouts after the fully connected layers. A rather interesting approach to elimiate overfitting in convolutional layers is to implement stochastic pooling. This would be done later.
+The CNN model is based on NVIDIA's End to end learning for self driving cars paper. There is a minor change to the NVIDIA's model, that we have added Max Pooling layers after each convolutional layers. The max pooling layers help in model regularization. Note thar dropouts overfitting is also reduced by adding dropouts after the fully connected layers. A rather interesting approach to elimiate overfitting in convolutional layers is to implement stochastic pooling. This would be done later.
 
 The model has a normalization layer followed by 5 convolutional layers. Note that each convolutional layer is followed by Max Pooling and an activation funtion- relu. The kernel size for first three convolutional layers is set at 5x5 with a stride of 2x2, while the kernel size for next 2 convolutional layers is 3 x 3 with a stride of 1 x 1. The model is flattened at the end of 5th convolutional layer. The last 5 layers are all fully connected layers, each activated by activation function - relu. The model is compiled using an Adam optimizer with a learning rate of 0.0001. Note that different learning rates from 0.0001 to 0.01 were tested, and a learning rate of 0.0001 was found to give best results.
 
-The model summary is as follows:
+Details are as follows:
+Input shape = 64x64x3
+1. normalization layer, output shape = 64x64x3
+2. convolutional layer, kernel size = 5x5, stride = 2x2, filter_size = 24, padding = valid, activation = relu. This is followed by a max pooling layer with pool_size = 2x2 and stride = 1x1
+3. convolutional layer, kernel size = 5x5, stride = 2x2, filter_size = 36, padding = valid, activation = relu. This is followed by a max pooling layer with pool_size = 2x2 and stride = 1x1
+4. convolutional layer, kernel size = 5x5, stride = 2x2, filter_size = 48, padding = valid, activation = relu. This is followed by a max pooling layer with pool_size = 2x2 and stride = 1x1
+5. convolutional layer, kernel size = 3x3, stride = 1x1, filter_size = 64, output shape = 32x32x24, padding = valid, activation = relu. This is followed by a max pooling layer with pool_size = 2x2 and stride = 1x1
+6. convolutional layer, kernel size = 3x3, stride = 1x1, filter_size = 64, output shape = 32x32x24, padding = valid, activation = relu. This is followed by a max pooling layer with pool_size = 2x2 and stride = 1x1
+7. After all the convolutional layers 5 fully connected layers are added with 1164, 100, 50, 10 and 1 output neurons respectively. Note that dropouts are added after first and second fully connected layers to reduce overfitting.
+
+Please see the pic for detailed model summary obtained using model.summary().
 ![alt tag](https://github.com/abhio9vt/Behavioral-Cloning/blob/master/model_summary.png)
 
 ### Training Process
