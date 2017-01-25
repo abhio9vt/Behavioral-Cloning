@@ -59,14 +59,14 @@ Details are as follows: Input shape = 64x64x3
 
 6. convolutional layer, kernel size = 3x3, stride = 1x1, filter_size = 64, output shape = 32x32x24, padding = valid, activation = relu. This is followed by a max pooling layer with pool_size = 2x2 and stride = 1x1
 
-7. After all the convolutional layers 5 fully connected layers are added with 1164, 100, 50, 10 and 1 output neurons respectively. Note that dropouts are added after first and second fully connected layers to reduce overfitting.
+7. After all the convolutional layers 5 fully connected layers are added with 1164, 100, 50, 10 and 1 output neurons respectively. Note that dropouts with keep_prob = 0.2 are added after first and second fully connected layers to reduce overfitting.
 
 Please see the pic for detailed model summary obtained using model.summary().
 ![alt tag](https://github.com/abhio9vt/Behavioral-Cloning/blob/master/model_summary.png)
 
 ### Training Process
 After preprocessing the images and augmenting the steering angles, I used fit_generator API of Keras library to train the model. The generator function helps as it generates images on the fly and trains them in batches. We designed 2 generators, one for training data and the other for validation data. Adam optimizer with a learning rate of 0.0001 was found to be working best during our simulation runs. The batch size for both the generators was set at 64, and the number of epochs was 
-set at 8 after trying various other #epochs ranging from 5 to 10. It was noticed that after 8 epochs there was very less decrease in validation error.
+set at 8 after trying various other #epochs ranging from 5 to 10. It was noticed that after 10 epochs there was very less decrease in validation error.
 
 Note that the generator function is a really good way to train and fit the model, as otherwise we need to store the images and steering angles in an array, which would take a lot of memory.
 
