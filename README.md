@@ -21,6 +21,8 @@ The training dataset now contains a total of 24108 images (8036 per camera).
 
 (iii) Brightness augmentation: We generated images with different brightness by first converting images to HSV, scaling up or down the V channel and converting back to the RGB channel.
 
+(iv) On plotting the steering angles in a histogram, it was noted that the distribution is skewed. This happens as the car is driven in counterclockwise direction in the simulator. To address this issue, we flip the image using openCV function cv2.flip and then take the negative of the steering angle of the original image.
+
 ### Network Architecture
 
 The CNN model is based on NVIDIA's End to end learning for self driving cars paper. There is a minor change to the NVIDIA's model, that we have added Max Pooling layers after each convolutional layers. This helped reduce training time and also reduce overfitting. Note that this can also be done by adding dropouts after the fully connected layers. A rather interesting approach to elimiate overfitting in convolutional layers is to implement stochastic pooling. This would be done later.
